@@ -34,6 +34,7 @@ class PasswordRecoveryPage(BasePage):
     @allure.step("Нажимаем кнопку Показать/спрятать пароль")
     def click_show_password_btn(self):
         locator = RecPassLocators.HIDE_PASS_BTN
+        self.wait_for_element_hide(BaseLocators.OVERLAY)
         self.click_on_element(locator)
 
     @allure.step("Проверяем что поле подсветилось, и появились новые атрибуты в классе")

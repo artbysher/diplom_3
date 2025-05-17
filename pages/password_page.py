@@ -44,4 +44,4 @@ class PasswordRecoveryPage(BasePage):
 
     @allure.step('Дождаться загрузки страницы')
     def main_page_loading_wait(self):
-        self.wait_for_element_hide(RecPassLocators.OVERLAY)
+        self.wait_for_element_hide(BaseLocators.OVERLAY)

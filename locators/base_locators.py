@@ -11,3 +11,5 @@ class BaseLocators:
     ORDER_BUTTON = [By.XPATH, "//button[text()='Оформить заказ']"]
     REG_LOG_BUTTON = [By.XPATH, "//a[@class='Auth_link__1fOlj' and text()='Войти']"]
     RESET_PASS_BUTTON = [By.XPATH, "//a[@class='Auth_link__1fOlj' and text()='Восстановить пароль']"]
+
+    OVERLAY = By.XPATH, ".//div[contains(@class, 'Modal_modal_overlay__x2ZCr')]/parent::div"

@@ -17,7 +17,7 @@ class TestsRecoverPass:
     @allure.title("Тест на ввод почты и клик по кнопке «Восстановить»")
     @allure.description(
         'Проверяем что URL страницы куда переходим после заполнения email и клика по кнопке "Востановить" соответсвует ожидаемому URl')
-    def test_transition_to_recover_password(self,driver):
+    def test_transition_to_new_password(self,driver):
         rec_pass = PasswordRecoveryPage(driver)
         rec_pass.click_to_main_page_btn()
         rec_pass.click_to_reset_pass_btn()
@@ -28,7 +28,7 @@ class TestsRecoverPass:
     @allure.title("Тест клик по кнопке показать/скрыть пароль")
     @allure.description(
         'Проверяем что клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его')
-    def test_transition_to_recover_password(self, driver):
+    def test_show_hide_password(self, driver):
         rec_pass = PasswordRecoveryPage(driver)
         rec_pass.main_page_loading_wait()
         rec_pass.click_to_main_page_btn()

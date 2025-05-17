@@ -9,4 +9,4 @@ class RecPassLocators:
     PASS_PLACEHOLDER = [By.XPATH, '//label[text()="Пароль"]']
     HIDE_PASS_BTN = (By.XPATH, ".//div[contains(@class,'input__icon input__icon-action')]")
     SHOW_RESET_PASS_BTN = [By.XPATH, "//div[contains(@class, 'input') and contains(@class, 'input_type_text') and contains(@class, 'input_status_active')]"]
-    OVERLAY = By.XPATH, ".//div[contains(@class, 'Modal_modal_overlay__x2ZCr')]/parent::div"
+

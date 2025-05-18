@@ -12,7 +12,7 @@ class TestsRecoverPass:
         rec_pass = PasswordRecoveryPage(driver)
         rec_pass.click_to_main_page_btn()
         rec_pass.click_to_reset_pass_btn()
-        assert driver.current_url == FORGOT_PASS_URL
+        assert rec_pass.check_url(FORGOT_PASS_URL)
 
     @allure.title("Тест на ввод почты и клик по кнопке «Восстановить»")
     @allure.description(
@@ -23,7 +23,7 @@ class TestsRecoverPass:
         rec_pass.click_to_reset_pass_btn()
         rec_pass.send_email_to_rec_pass(data.Credentials.EMAIL)
         rec_pass.click_to_reset_btn()
-        assert driver.current_url == RESET_PASS_URL
+        assert rec_pass.check_url(RESET_PASS_URL)
 
     @allure.title("Тест клик по кнопке показать/скрыть пароль")
     @allure.description(

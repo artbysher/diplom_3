@@ -1,12 +1,10 @@
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 import pytest
 from selenium import webdriver
 
 from curl import *
 from data import Credentials
 from locators.base_locators import BaseLocators
+from pages.base_page import BasePage
 
 
 @pytest.fixture(params=["chrome", "firefox"])
@@ -26,7 +24,9 @@ def driver(request):
 @pytest.fixture
 def authorize(driver):
     #Фикстура для авторизации пользователя.
-    WebDriverWait(driver, timeout=10).until(EC.invisibility_of_element_located(BaseLocators.OVERLAY))
+    base_page = BasePage(driver)
+    base_page.wait_for_element_hide(BaseLocators.OVERLAY)
+
     driver.find_element(*BaseLocators.MAIN_PAGE_BUTTON).click()
     driver.find_element(*BaseLocators.EMAIL).send_keys(Credentials.EMAIL)
     driver.find_element(*BaseLocators.PASSWORD).send_keys(Credentials.PASSWORD)

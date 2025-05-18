@@ -4,7 +4,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from seletools.actions import drag_and_drop
 
-from locators.base_locators import BaseLocators
 
 
 class BasePage:
@@ -45,7 +44,6 @@ class BasePage:
         return element.text
 
 
-
     @allure.step("Сравнить текущий URL с ожидаемым")
     def check_url(self, expected_url):
         actual_url = self.driver.current_url
@@ -55,10 +53,6 @@ class BasePage:
     @allure.step("Подождать ожидаемый URL страницы")
     def wait_for_url(self, expected_url, timeout=10):
         return (WebDriverWait(self.driver, timeout).until(EC.url_to_be(expected_url)))
-
-    @allure.step('Дождаться загрузки страницы')
-    def main_page_loading_wait(self):
-        self.wait_for_element_hide(BaseLocators.OVERLAY)
 
 
     @allure.step('Перетащить элемент в корзину')
@@ -74,6 +68,7 @@ class BasePage:
     def open_url(self, url):
         self.driver.get(url)
 
-    #def get_order_number(self, locator, timeout=25):
-        #return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
+    @allure.step("Ожидать видимости номера")
+    def get_order_number(self, locator, timeout=25):
+        return WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
 

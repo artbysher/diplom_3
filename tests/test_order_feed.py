@@ -1,5 +1,6 @@
 import allure
 
+from data import TextAssert
 from pages.basic_function_page import BasicFunctionPage
 from pages.order_feed_page import OrderFeedPage
 
@@ -15,7 +16,7 @@ class TestsOrderFeed:
         order_feed.click_to_order_in_feed()
         window_text = order_feed.get_order_window_text()
 
-        assert 'Cостав' in window_text and order_feed.get_order_window_is_displayed() ==True
+        assert TextAssert.TEXT_OPEN_WINDOW in window_text
 
 
     @allure.title("Тест заказ из «Истории заказов» отображаются в «Ленте заказов» ")

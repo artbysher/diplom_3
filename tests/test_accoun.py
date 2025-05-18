@@ -11,7 +11,7 @@ class TestsAccount:
         lk = AccountPage(driver)
         lk.click_to_lk_btn()
 
-        assert driver.current_url == LOGIN_URL
+        assert lk.check_url(LOGIN_URL)
 
     @allure.title("Тест на переход переход по клику на «История заказов» из личного кабинета")
     @allure.description(
@@ -21,7 +21,7 @@ class TestsAccount:
         lk = AccountPage(driver)
         lk.click_to_lk_btn()
         lk.click_to_order_history_btn()
-        assert driver.current_url == ORDER_HISTORY_URL
+        assert lk.check_url(ORDER_HISTORY_URL)
 
     @allure.title("Тест на выход из Личного кабинета ")
     @allure.description(
@@ -33,5 +33,5 @@ class TestsAccount:
 
         lk.click_to_order_logout()
         lk.wait_for_url(LOGIN_URL)
-        assert driver.current_url == LOGIN_URL
+        assert lk.check_url(LOGIN_URL)
 

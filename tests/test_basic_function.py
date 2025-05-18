@@ -1,6 +1,7 @@
 import allure
 
 from curl import *
+from data import TextAssert
 from pages.basic_function_page import BasicFunctionPage
 
 
@@ -13,7 +14,7 @@ class TestsBasicFunction:
         constructor = BasicFunctionPage(driver)
         constructor.click_to_lk_btn()
         constructor.click_to_constructor_btn()
-        assert driver.current_url == MAIN_SITE
+        assert constructor.check_url(MAIN_SITE)
 
     @allure.title("Тест на переход переход по клику на «Лента заказов»а")
     @allure.description(
@@ -22,7 +23,7 @@ class TestsBasicFunction:
         feed = BasicFunctionPage(driver)
 
         feed.click_to_feed_btn()
-        assert driver.current_url == FEED_URL
+        assert feed.check_url(FEED_URL)
 
     @allure.title("Тест на появление всплывающего окна с деталями об ингредиенте")
     @allure.description(
@@ -32,7 +33,7 @@ class TestsBasicFunction:
         detail.click_to_ingredient_btn()
         window_text = detail.get_detail_window_text()
 
-        assert "Детали ингредиента" in window_text and driver.current_url.startswith(INGREDIENT_URL)
+        assert TextAssert.TEXT_DETAIL_WINDOW in window_text and driver.current_url.startswith(INGREDIENT_URL)
 
     @allure.title("Тест на закрытие, окна с деталями об ингредиенте, через крестик")
     @allure.description(
@@ -44,7 +45,7 @@ class TestsBasicFunction:
 
         top_text = function_page.get_element_text()
 
-        assert "Начинки" in top_text
+        assert TextAssert.TEXT_CLOSE_WINDOW in top_text
 
     @allure.title("Тест на изменение каунтера добавленного ингредиента")
     @allure.description(
@@ -54,7 +55,7 @@ class TestsBasicFunction:
         function_page.put_ingredient_into_basket()
         counter_text = function_page.get_counter_text()
 
-        assert "2" in counter_text
+        assert TextAssert.TEXT_COUNTER in counter_text
 
 
     @allure.title("Тест на оформление заказа авторизованныи пользователем")
@@ -67,7 +68,7 @@ class TestsBasicFunction:
 
         function_page.click_to_order_btn()
         order_text = function_page.get_id_order_text()
-        assert "идентификатор заказа" in order_text
+        assert TextAssert.TEXT_ID_ORDER in order_text
 
 
 

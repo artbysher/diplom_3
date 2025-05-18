@@ -23,7 +23,7 @@ def driver(request):
 
 @pytest.fixture
 def authorize(driver):
-    #Фикстура для авторизации пользователя.
+    #Фикстура для авторизации пользователя..
     base_page = BasePage(driver)
     base_page.wait_for_element_hide(BaseLocators.OVERLAY)
 
